@@ -6,13 +6,16 @@ namespace FPS
 	
 	public class Main : MonoBehaviour
 	{
+        public static Main Instance { get; private set; }
         private GameObject _controllerGameObject;
         public InputController _inputController { get; private set; }
         public FlashLightController _flashLightController { get; private set; }
         public WeaponController _weaponController { get; private set; }
         public ObjectManager _objectManager { get; private set; }
         public TeammatesController _teammatesController { get; private set; }
-        public static Main Instance { get; private set; }
+        public TeammateModel _teammateModel { get; private set; }
+        public TeammatesView _teammateView { get; private set; }
+        
 
 		private void Awake()
 		{
@@ -39,9 +42,7 @@ namespace FPS
         }
 
         #region Propery
-        /// <summary>
-        /// get flashlight control
-        /// </summary>
+
         public FlashLightController GetFlashLightController
         {
             get { return _flashLightController; }
@@ -63,7 +64,10 @@ namespace FPS
         {
             return _objectManager;
         }
-
+        public TeammatesController GetTeammatesController()
+        {
+            return _teammatesController;
+        }
         #endregion
     }
 }
