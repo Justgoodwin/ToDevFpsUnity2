@@ -356,7 +356,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 160354742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b7c9f32d6695d42947c1671abf6d0d, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &160354744
@@ -1659,6 +1659,10 @@ Prefab:
     - target: {fileID: 19597056, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
       propertyPath: m_AgentTypeID
       value: -334000983
+      objectReference: {fileID: 0}
+    - target: {fileID: 434400, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
