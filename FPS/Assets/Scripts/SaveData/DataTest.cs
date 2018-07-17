@@ -7,6 +7,16 @@ namespace FPS
 {
     public class DataTest : MonoBehaviour
     {
+        public enum DataProviders
+        {
+            TXT,XML,PLAYER_PREFS,JSON
+        }
+
+        [SerializeField]
+        private DataProviders _providers;
+        private DataManager _dataManager = new DataManager();
+
+
         private void Start()
         {
             var path = Application.dataPath;
@@ -17,14 +27,29 @@ namespace FPS
                 IsVisible = true
             };
 
-            IData data = new StreamData();
-            data.SetOption(path);
+            switch (_providers)
+            {
+                case DataProviders.JSON:
+                    _dataManager.SetData<JSONData>();
+                    break;
+                case DataProviders.PLAYER_PREFS:
+                    _dataManager.SetData<PlayerPrefsData>();
+                    break;
+                case DataProviders.TXT:
+                    _dataManager.SetData<StreamData>();
+                    break;
+                case DataProviders.XML:
+                    _dataManager.SetData<XMLData>();
+                    break;
+
+            }
+            _dataManager.SetOption(path);
 
             Debug.Log(player.ToString());
 
-            data.Save(player);
+            _dataManager.Save(player);
 
-            var loadedPlayer = data.Load();
+            var loadedPlayer = _dataManager.Load();
             Debug.Log(loadedPlayer.ToString());
         }
     }

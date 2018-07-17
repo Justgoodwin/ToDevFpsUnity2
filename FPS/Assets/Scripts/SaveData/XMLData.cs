@@ -40,6 +40,7 @@ namespace FPS
 
                 }
             }
+            return result;
         }
 
         public void Save(Player player)
