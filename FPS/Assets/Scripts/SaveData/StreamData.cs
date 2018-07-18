@@ -22,17 +22,32 @@ namespace FPS
                     try
                     {
                         result.Name = sr.ReadLine();
-                        result.HP = float.Parse(sr.ReadLine());
-                        result.IsVisible = bool.Parse(sr.ReadLine());
                     }
                     catch
                     {
                         result.Name = "Default Name";
+                    }
+                    try
+                    {
+                        result.HP = float.Parse(sr.ReadLine());
+                    }
+                    catch
+                    {
                         result.HP = 0;
+                    }
+                    try
+                    {
+                        result.IsVisible = bool.Parse(sr.ReadLine());
+                    }
+                    catch
+                    {
                         result.IsVisible = false;
                     }
+
                     
+                        
                 }
+                    
             }
             return result;
         }

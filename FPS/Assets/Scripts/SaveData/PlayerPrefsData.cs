@@ -9,16 +9,14 @@ namespace FPS
         {
             Player result = new Player();
 
-            try
-            {
-                result.Name = PlayerPrefs.GetString("Name", "Player");
-                result.HP = PlayerPrefs.GetFloat("HP", 100f);
-                result.IsVisible = bool.Parse(PlayerPrefs.GetString("IsVisible", "false"));
-            }
-            catch
-            {
-                return default(Player);
-            }
+            try { result.Name = PlayerPrefs.GetString("Name", "Player"); }
+            catch { result.Name = "Default Name"; }
+
+            try { result.HP = PlayerPrefs.GetFloat("HP", 100f); }
+            catch { result.HP = 100f; }
+
+            try { result.IsVisible = bool.Parse(PlayerPrefs.GetString("IsVisible", "false")); }
+            catch { result.IsVisible = false; }
 
             return result;
 

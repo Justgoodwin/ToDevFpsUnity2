@@ -50,15 +50,15 @@ namespace FPS
             xmlDoc.AppendChild(rootNode);
 
             var element = xmlDoc.CreateElement("Name");
-            element.SetAttribute("value", player.Name);
+            element.SetAttribute("value", EncriptingAndDecriptingSaveFile.Encript(player.Name));
             rootNode.AppendChild(element);
 
             element = xmlDoc.CreateElement("HP");
-            element.SetAttribute("value", player.HP.ToString());
+            element.SetAttribute("value", EncriptingAndDecriptingSaveFile.Encript(player.HP.ToString()));
             rootNode.AppendChild(element);
 
             element = xmlDoc.CreateElement("IsVisible");
-            element.SetAttribute("value", player.IsVisible.ToString());
+            element.SetAttribute("value", EncriptingAndDecriptingSaveFile.Encript(player.IsVisible.ToString()));
             rootNode.AppendChild(element);
 
             XmlNode infoNode = xmlDoc.CreateElement("Info");
