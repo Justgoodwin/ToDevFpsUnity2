@@ -5,36 +5,74 @@ using UnityEngine;
 namespace FPS
 {
 
-    public class SingleBarreled : Weapons
+    public class SingleBarreled : Weapon
     {
-        [SerializeField] private string _bulletID = "HP_bullet";
+        //[SerializeField] private string _poolID = "bullet";
+        [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private float _force = 500f;
         [SerializeField] private Transform _firepoint;
         [SerializeField] private float _timeout = 0.5f;
+
+        //public static List<Bullet> Bullets { get; set; }
+        //private static Dictionary<string, Queue<IPoolable>> _objectDict = new Dictionary<string, Queue<IPoolable>>();
 
         private float _lastShotTime;
 
         public AudioClip _rifleShoot;
 
+        //public SingleBarreled()
+        //{
+        //    Bullets = new List<Bullet>(10);
+
+        //    Queue<IPoolable> queue = new Queue<IPoolable>();
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        GameObject a = Instantiate(_bulletPrefab, _firepoint.position, _firepoint.rotation)
+        //        queue.Enqueue(a);
+        //    }
+        //    _objectDict.Add(_poolID, queue);
+        //}
+
+        //public static IPoolable GetObject(string poolId)
+        //{
+        //    if (string.IsNullOrEmpty(poolId))
+        //    {
+        //        return null;
+        //    }
+        //    if (!_objectDict.ContainsKey(poolId))
+        //    {
+        //        return null;
+        //    }
+
+        //    Queue<IPoolable> queue = _objectDict[poolId];
+        //    IPoolable firstBullet = queue.Dequeue();
+        //    _objectDict[poolId].Enqueue(firstBullet);
+
+        //    return firstBullet;
+        //}
+
+
         public override void Fire()
         {
-            if(Time.time - _lastShotTime < _timeout)
+
+            if (Time.time - _lastShotTime < _timeout)
                 return;
 
             _lastShotTime = Time.time;
 
-            Bullet bullet = (Bullet)BaseObjectPool.Instance.GetObject(_bulletID);
+            GameObject bullet = Instantiate(_bulletPrefab, _firepoint.position, _firepoint.rotation);
+            //var pool = new BaseObjectPool();
+            //IPoolable iPoolable = GetObject(_poolID);
+            //if (iPoolable == null)
+            //{
+            //    Debug.Log(string.Format("Can not find pool {0}", _poolID));
+            //}
 
-            if (!bullet)
-            {
-                return;
-            }
-            bullet.transform.position = _firepoint.position;
-            bullet.transform.rotation = _firepoint.rotation;
-            bullet.Intialize(_force);
+            //var bullet = (Bullet)iPoolable;
 
-            AudioSource.PlayClipAtPoint(_rifleShoot, transform.position);
-            
+            bullet.GetComponent<Bullet>().Intialize(_force);
+            //bullet.AddForce(_firepoint.forward * _force, ForceMode.Impulse);
+
         }
     }
 }

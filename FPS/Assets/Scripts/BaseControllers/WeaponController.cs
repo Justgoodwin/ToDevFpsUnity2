@@ -1,34 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 namespace FPS
 {
     public class WeaponController : BaseController
     {
-        private Weapons[] _weapons;
-        private int _currentWeapon;
+        [SerializeField] private List<Weapon> _weaponsList;
+        [SerializeField] private List<Ammunition> _ammunitionsList;
+        private Weapon _currentWeapon;
 
         private void Awake()
         {
-            _weapons = FindObjectOfType<RigidbodyFirstPersonController>().GetComponentsInChildren<Weapons>(true);
-            for (int i = 1; i < _weapons.Length; i++)
-                _weapons[i].IsVisible = i == 1;
+            _currentWeapon = FindObjectOfType<FirstPersonController>().GetComponentInChildren<Weapon>(true);
         }
 
         public void ChangeWeapon()
         {
-            _weapons[_currentWeapon].IsVisible = false;
-            _currentWeapon++;
-            if (_currentWeapon >= _weapons.Length)
-                _currentWeapon = 1;
-            _weapons[_currentWeapon].IsVisible = true;
+            int currentWeaponIndex = _weaponsList.IndexOf(_currentWeapon);
+            if (currentWeaponIndex == -1)
+            {
+                Debug.LogError("Can not find current weapon in WeaponList.");
+            }
+
+            if (currentWeaponIndex >= _weaponsList.Count - 1)
+            {
+                Debug.LogWarning("Can not find current weapon in WeaponList.");
+            }
+
+            _weaponsList[currentWeaponIndex].IsVisible = false;
+            currentWeaponIndex++;
+            
+            _weaponsList[currentWeaponIndex].IsVisible = true;
         }
 
         public void Fire()
         {
-            if (_weapons.Length > _currentWeapon && _weapons[_currentWeapon])
-                _weapons[_currentWeapon].Fire();
+            _currentWeapon.Fire();
         }
     }
 }

@@ -2,7 +2,7 @@
 namespace FPS
 {
 
-    public abstract class Weapons : MonoBehaviour
+    public abstract class Weapon : MonoBehaviour
     {
         #region Serialize Veriable
         //Bullet start point

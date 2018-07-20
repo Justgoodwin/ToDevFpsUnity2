@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 namespace FPS
 {
     public abstract class Ammunition : BaseObjectScene, IPoolable
@@ -13,10 +10,10 @@ namespace FPS
             get { return _poolId; }
         }
 
-        [SerializeField] private int _objctCount = 10;
+        [SerializeField] private int _objectCount;
         public int ObjectCount
         {
-            get { return _objctCount; }
+            get { return _objectCount; }
         }
     }
 }
