@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - M4
   - Ak-47
+  - bullet
   layers:
   - Default
   - TransparentFX

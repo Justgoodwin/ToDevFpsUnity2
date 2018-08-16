@@ -74,22 +74,31 @@
     <Compile Include="Assets\Scripts\Interface\IDamageble.cs" />
     <Compile Include="Assets\Scripts\Interface\IPoolable.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
+    <Compile Include="Assets\Scripts\Minimap\MakeRadarObject.cs" />
+    <Compile Include="Assets\Scripts\Minimap\Radar.cs" />
     <Compile Include="Assets\Scripts\Models\FlashlightModel.cs" />
     <Compile Include="Assets\Scripts\Models\TeammateModel.cs" />
-    <Compile Include="Assets\Scripts\MyScriptEditor.cs" />
+    <Compile Include="Assets\Scripts\MP\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\MP\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\MP\TankBullets.cs" />
     <Compile Include="Assets\Scripts\MyWindow.cs" />
-    <Compile Include="Assets\Scripts\ObjectManager.cs" />
+    <Compile Include="Assets\Scripts\ResoureceLoader.cs" />
+    <Compile Include="Assets\Scripts\SaveData\DataManager.cs" />
     <Compile Include="Assets\Scripts\SaveData\DataTest.cs" />
+    <Compile Include="Assets\Scripts\SaveData\EncriptingAndDecriptingSaveFile.cs" />
     <Compile Include="Assets\Scripts\SaveData\IData.cs" />
+    <Compile Include="Assets\Scripts\SaveData\JSONData.cs" />
     <Compile Include="Assets\Scripts\SaveData\Player.cs" />
+    <Compile Include="Assets\Scripts\SaveData\PlayerPrefsData.cs" />
     <Compile Include="Assets\Scripts\SaveData\StreamData.cs" />
     <Compile Include="Assets\Scripts\SaveData\XMLData.cs" />
     <Compile Include="Assets\Scripts\SingleBarreled.cs" />
     <Compile Include="Assets\Scripts\Views\FlashlightViews.cs" />
     <Compile Include="Assets\Scripts\Views\TeammatesView.cs" />
-    <Compile Include="Assets\Scripts\Weapons.cs" />
+    <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\WhenFindBox.cs" />
     <None Include="Assets\StramData.txt" />
+    <None Include="Assets\XMLData.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Justgoodwin/Desktop/ToDevFpsUnity2/FPS/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
